@@ -1,0 +1,3 @@
+git stash apply: This command retrieves the changes from the most recent stash and applies them to the current branch, without removing them from the stash. 
+git stash pop: This command retrieves the changes from the most recent stash and applies them to the current branch, just like git stash apply. However, it also removes the changes from the stash.
+git stash apply is useful when you want to apply changes from a stash without removing them from the stash, while git stash pop is useful when you want to both apply the changes and remove them from the stash.
