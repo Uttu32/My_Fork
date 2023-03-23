@@ -1,0 +1,54 @@
+.CardFlex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 80px;
+    gap: 20px;
+    margin-top: 190px;
+  }
+  
+  .CardParent{
+    /* border: 1px solid rgb(19, 185, 138); */
+    width: 800px;
+    height: 300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    background-color: rgba(205, 152, 76, 0.93);
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px 3px rgb(0, 0, 0);
+  }
+  
+  .CardParent > img{
+    width: 80px;
+    height: 80px;
+    border-radius: 70%;
+    
+  
+  }
+  
+  .ComponentCard{
+    /* border: 2px solid black; */
+    height: 600px;
+    width: 2000px;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  .StaticCard{
+    position: fixed;
+  
+  }
+  
+  .StaticCard>h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: rgb(98, 165, 221);
+  }
+  
+  .StaticCard > p{
+    font-weight: 700;
+  }
+  
