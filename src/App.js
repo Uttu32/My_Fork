@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const url = "https://jsonplaceholder.typicode.com/posts"
+  const [users, setUsers] = useState([])
+
+
+  useEffect(() => {
+    axios.get(url).then((response) => {
+      setUsers(response.data);
+      console.log(users)
+    });
+  }, []);
+
+  const removeUser=(index)=> {
+    users.splice(index, 1)
+  setUsers([...users]  )
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Data</h1>
+      <table>
+        <thead>
+          <tr>
+          <th >S. No</th>
+          <th>Title</th>
+          <th>Body</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          {
+            users.map((ele, index) => (
+              <tr>
+                <td>{index + 1}</td>
+                <td>{ele.title}</td>
+                <td>{ele.body}</td>
+                <td><button onClick={()=>removeUser(index)}>❌</button></td>
+                </tr>
+            ))
+          }
+        </tbody>
+      </table>
+     
     </div>
   );
 }
