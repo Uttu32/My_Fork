@@ -1,67 +1,121 @@
-h1,
-p {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.App{
+  width: 50%;
+  margin: auto;
+  border: 1px solid black;
+  position: relative;
 }
 
-/* body{
-  background-color: rgb(233, 70, 75);
-} */
-
-.Main{
-  border: 1px solid;
-  height: 750px;
-  /* background-color: rgb(62, 126, 190); */
-}
-
-.Twosection{
-  margin-top: 10px;
-  border: 1px solid red;
-  height: 350px;
-  background-color: seagreen;
+.App form{
   display: flex;
+  width: 70%;
+  border: 1px solid black;
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 10px;
 }
 
-.Output{
+form button{
+  margin-top: 35px;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: white;
+  background-color: rgb(255, 174, 0);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s linear;
+}
+
+form button:hover{
+  background-color: rgb(255, 102, 0);
+}
+
+
+form select{
+  width: 100%;
+}
+
+
+.input-div{
+  width: 30%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.input-div select{
+  width: 80%;
+}
+
+.input-div input{
+  width: 80%;
+}
+
+.name-input{
+  
+  margin-left: 80px;
   margin-top: 10px;
-  border: 1px solid rgb(227, 15, 234);
-  height: 350px;
-  /* padding: 20px; */
-  background-color: paleturquoise;
+  margin-bottom: 10px;
+}
+.create-bill{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  background-color: rgb(109, 109, 209);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s linear;
 }
 
-.Form-Data{
-  border: 1px solid greenyellow;
-  width: 45%;
-  height: 300px;
-  margin-top: 20px;
-  margin-left: 20px;
-  background-color: white;
+.create-bill:hover{
+  background-color: black;
 }
 
-.Form-Data > h4{
+
+table{
+  width: 100%;
   text-align: center;
+  border-collapse: collapse;
 }
 
-.Corresponding-FormData{
-  border: 1px solid greenyellow;
-  width: 45%;
-  height: 300px;
-  margin-top: 20px;
-  margin-left: 50px;
-  background-color: white;
+th,td{
+  border: 1px solid black;
+}
+th{
+  border: 2px solid black;
 }
 
-form{
+
+.div-container{
   display: flex;
-  flex-direction: column;
-  margin-left: 130px;
-  width: 450px;
-  height: 30px;
-  gap: 20px;
+  width: 70%;
+  margin: auto;
+  border: 1px solid black;
+  justify-content: space-between;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-form >button{
-  width: 100px;
-  margin-left: 150px;
+
+.sum-div{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+.sum-div p{
+  font-weight: bold;
+  margin-left: 35px;
+  /* margin-right: 20px; */
+}
+.sum-div p:nth-child(2){
+  margin-right: 72px;
 }

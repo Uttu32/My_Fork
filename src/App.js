@@ -1,123 +1,167 @@
-import React,{useState} from "react";
 import "./App.css";
+import { useState } from "react";
 
-export default function App() {
+function App() {
+  const d = new Date();
+  const date = d.getDate();
+  const month = d.getMonth();
+  const year = d.getFullYear();
+  const fulldate = date + "-" + (month + 1) + "-" + year;
 
-  const[data , setData] = useState([]);
+  let sum = 0;
+  const [name, setName] = useState(""); //For cust Name
+  const [data, setData] = useState([]);
+  const [product, setProduct] = useState("");
+  const [quantity, setQuantity] = useState("");
 
-  const[name,setName] = useState("");
-  const[age,setAge] = useState("");
-  const[hobby,setHobby] = useState("");
-  const[email,setEmail] = useState("");
+  const [isbill, setIsbill] = useState(false);
 
-  function handleName(e){
-    setName(e.target.value);
-  }
-
-  function handleAge(e){
-    setAge(e.target.value);
-  }
-
-  function handleHobby(e){
-    setHobby(e.target.value);
-  }
-
-  function handleEmail(e){
-    setEmail(e.target.value);
-  }
-
-  function handleAdd(e){
+  const handleSubmit = (e) => {
     e.preventDefault();
     setData([
-      ...data,{
-        name, 
-        age,
-        hobby,
-        email
-      }
+      ...data,
+      {
+        product: product,
+        quantity: quantity,
+        price: Math.floor(Math.random() * 100 + 1),
+      },
     ]);
-    setName("");
-    setAge("");
-    setEmail("");
-    setHobby("");
-  }
+  };
 
-  function handleDelete(id){
-    const newData = data.filter((el) =>  el.email !== id)
-    setData(newData);
-  }
+  const handeleChangeproduct = (e) => {
+    setProduct(e.target.value);
+  };
+
+  const handelChangeQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const handelChangename = (e) => {
+    setName(e.target.value);
+  };
+
+  const handelCreateBill = () => {
+    setIsbill(true);
+  };
+
+  const handelClosebill = () => {
+    setIsbill(false);
+  };
+
+  console.log(data);
 
   return (
-    <div className="Main">
-      
-      <div className="Twosection">
+    <div className="App">
+      <h1>Customer Name</h1>
+      <input
+        className="name-input"
+        type="text"
+        placeholder="Customer Name"
+        onChange={handelChangename}
+      />
 
+      {data.map(() => {
+        return (
+          <div className="div-container">
+            <div className="input-div">
+              <p>Select Product</p>
+              <select name="" id="" onChange={handeleChangeproduct}>
+                <option value="">Select</option>
+                <option value="Sugar">Sugar</option>
+                <option value="Oats">Oats</option>
+                <option value="Cofee">Cofee</option>
+                <option value="Snaks">Snacks</option>
+              </select>
+            </div>
 
-        <div className="Form-Data">
-          <h4>Enter Unique Email Id</h4>
-          <form>
-            <input 
-            type="text" 
-            onChange={(e)=>handleName(e)}
-            value={name}
-            placeholder="Enter Your Name"
-            />
+            <div className="input-div">
+              <p>Select Quantity</p>
 
-            <input 
-            type="number" 
-            onChange={(e)=>handleAge(e)}
-            value={age}
-            placeholder="Enter your Age"
-            />
+              <input
+                onChange={handelChangeQuantity}
+                type="text"
+                placeholder="Quantity"
+              />
+            </div>
+          </div>
+        );
+      })}
+      <form onSubmit={handleSubmit}>
+        <div className="input-div">
+          <p>Select Product</p>
+          <select name="" id="" onChange={handeleChangeproduct}>
+            <option value="">Select</option>
+            <option value="Sugar">Sugar</option>
+            <option value="Oats">Oats</option>
+            <option value="Cofee">Coffee</option>
+            <option value="Snaks">Snacks</option>
+          </select>
+        </div>
+        <div className="input-div">
+          <p>Select Quantity</p>
 
-            <input
-            onChange={(e)=>handleHobby(e)}
+          <input
+            onChange={handelChangeQuantity}
             type="text"
-            value={hobby}
-            placeholder="Enter your hobbies"
-            />
-
-            <input 
-            type="email"
-            onChange={(e)=>handleEmail(e)}
-            value={email}
-            placeholder="Enter your Email" 
-            />
-
-            <button onClick={handleAdd}>Add data</button>
-          </form>
+            placeholder="Quantity"
+          />
         </div>
+        <button type="submit">Add Moe Item</button>
+      </form>
 
+      <hr />
 
-        <div className="Corresponding-FormData">
-          <h4>Name : {name}</h4>
-          <h4>Age : {age}</h4>
-          <h4>Hobby : {hobby}</h4>
-          <h4>Email : {email}</h4>
+      <button className="create-bill" onClick={handelCreateBill}>
+        Create Bill
+      </button>
+
+      {isbill && (
+        <div>
+          <h4>Customer Name: {name}</h4>
+          <h4>Date: {fulldate}</h4>
+          {/* //data also */}
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {data.map((item) => {
+                return (
+                  <tr>
+                    <td>{item.product}</td>
+                    <td>{item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>{+item.quantity * item.price}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="sum-div">
+            <p>Total</p>
+
+            <p>
+              {data.forEach((ele) => {
+                sum += ele.price * +ele.quantity;
+              })}
+
+              {sum}
+            </p>
+          </div>
+
+          <button onClick={handelClosebill}>close bill</button>
         </div>
+      )}
 
-      </div>
-
-
-      <div className="Output">
-          {data.map((x)=>{
-            return (
-              <p>
-                <span>
-                  {x.name}
-                  - {x.age}- 
-                  {x.hobby} - 
-                  {x.email}
-
-                  <span onClick={()=>handleDelete(x.email)}>❌</span>
-                </span>
-              </p>
-            )
-          })}
-        
-      </div>
-
-
+     
     </div>
   );
 }
+
+export default App;
