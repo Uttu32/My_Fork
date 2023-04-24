@@ -1,19 +1,41 @@
 .App {
-  text-align: center;
-}
-table{
-  border: 1px solid ;
-  border-collapse: collapse;
-}
-th, td{
-  border: 1px solid ;
- 
-  
-}
-button{
-  background-color: white;
-}
-.actions{
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App-form {
+  width: 30%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-form input {
+  width: 85%;
+  height: 2rem;
+  font-size: 20px;
+  border-radius: 20px;
+}
+
+.App-form button {
+  width: 10%;
+  height: 2.3rem;
+font-weight: bold;
+  background: cornflowerblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.App-form button:hover {
+  background: rgb(8, 141, 123);
+}
+
+.Todos {
+  width: 30%;
 }
